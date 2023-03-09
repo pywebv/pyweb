@@ -1,20 +1,20 @@
-# PyStark - Python add-on extension to Pyrogram
-# Copyright (C) 2021-2022 Stark Bots <https://github.com/StarkBotsIndustries>
+# PyWeb - Python add-on extension to Pyrogram
+# Copyright (C) 2023-2024 PyWebV <https://github.com/pywebv>
 #
-# This file is part of PyStark.
+# This file is part of PyWeb.
 #
-# PyStark is free software: you can redistribute it and/or modify
+# PyWeb is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
 #
-# PyStark is distributed in the hope that it will be useful,
+# PyWeb is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with PyStark. If not, see <https://www.gnu.org/licenses/>.
+# along with PyWeb. If not, see <https://www.gnu.org/licenses/>.
 
 
 import os
@@ -24,17 +24,17 @@ import logging
 import importlib
 import importlib.util
 from typing import Union
-from pystark.logger import logger
+from pyweb.logger import logger
 from pyrogram.types import BotCommand
 from pyrogram import Client, idle, raw
-from pystark.decorators import Mechanism
-from pystark.config import ENV, settings
-from pystark.constants import __version__
+from pyweb.decorators import Mechanism
+from pyweb.config import ENV, settings
+from pyweb.constants import __version__
 from inspect import getmembers, isfunction
-from pystark.plugins.models.bans import Bans
-from pystark.plugins.models.users import Users
-from pystark.helpers.localization import l10n_setup, get_all_langs
-from pystark.decorators.command import command_data
+from pyweb.plugins.models.bans import Bans
+from pyweb.plugins.models.users import Users
+from pyweb.helpers.localization import l10n_setup, get_all_langs
+from pyweb.decorators.command import command_data
 from pyrogram.errors import ApiIdInvalid, AccessTokenInvalid, AuthKeyDuplicated, AuthKeyUnregistered, UserDeactivated
 
 
@@ -42,10 +42,10 @@ __data__ = {"total_plugins": 0, "all_plugins": {}}
 __printed__ = False
 
 
-class Stark(Client, Mechanism):
-    __support__ = "StarkBotsChat"
-    __updates__ = "pystark"
-    __channel__ = "StarkBots"
+class Web(Client, Mechanism):
+    __support__ = "pyweb_chat"
+    __updates__ = "pywebv"
+    __channel__ = "pywebv"
 
     # __id__ = None
     # __username__ = None
@@ -53,8 +53,8 @@ class Stark(Client, Mechanism):
     def __init__(self, **kwargs):
         global __printed__
         if not __printed__:
-            print(f'Welcome to PyStark [v{__version__}]')
-            print('Copyright (C) 2021-2022 Stark Bots <https://github.com/StarkBotsIndustries> \n')
+            print(f'Welcome to PyWeb [v{__version__}]')
+            print('Copyright (C) 2023-2024 PyWebV <https://github.com/pywebv> \n')
             __printed__ = True
         env = ENV()
         super().__init__(
@@ -66,41 +66,41 @@ class Stark(Client, Mechanism):
         )
 
     def activate(self):
-        """Main method of `Stark` class which loads plugins and activates/runs your bot."""
+        """Main method of `Web` class which loads plugins and activates/runs your bot."""
         module = settings()
         try:
-            self.log("Starting the Bot")
+            self.log("Starting the Bot...")
             self.start()
-            self.log("Loading Modules")
+            self.log("Loading Modules...")
             plugins = getattr(module, "PLUGINS")
             if plugins:
                 if isinstance(plugins, list):
                     for folder in plugins:
-                        Stark.log(f"Searching for plugins in '{folder}'...")
+                        Web.log(f"Searching for plugins in '{folder}'...")
                         self.load_modules(folder)
                 else:
                     self.load_modules(plugins)
             addons = module.ADDONS
             if addons:
-                self.log("Loading Addons")
+                self.log("Loading Addons...")
                 for i in addons:
-                    path = f"pystark/plugins/addons/{i}"
+                    path = f"pyweb/plugins/addons/{i}"
                     if not path.endswith(".py"):
                         path += ".py"
                     self.load_modules(path)
             if module.DATABASE_TABLES:
-                self.log("Initializing Database")
-                from pystark.database.sql import Database
+                self.log("Initializing Database...")
+                from pyweb.database.sql import Database
                 Database()  # tables need to be bound to engine
                 for i in module.DATABASE_TABLES:
                     self._load_sql_model(i)
             if l10n_setup():
                 self.log("Localization setup completed!")
             if getattr(module, "SET_BOT_MENU"):
-                self.log("Updating Bot Menu")
+                self.log("Updating Bot Menu...")
                 self.update_bot_menu()
             else:
-                self.log("Skipping Bot Menu Update")
+                self.log("Skipping Bot Menu Update...")
             logger.info("{} is now running...".format('@' + self.get_me().username))
             idle()
         finally:
@@ -110,10 +110,10 @@ class Stark(Client, Mechanism):
                 except ConnectionError:
                     pass
             self.stop()
-            logger.info("Bot has stopped working. For issues, visit <https://t.me/StarkBotsChat>")
+            logger.info("Bot has stopped working. For issues, visit <https://t.me/pyweb_chat>")
 
     def run(self):
-        """Alias of `Stark.activate()`"""
+        """Alias of `Web.activate()`"""
         self.activate()
 
     def start(self):
@@ -137,7 +137,7 @@ class Stark(Client, Mechanism):
     def list_modules(directory):
         """List all modules in a directory"""
         if not os.path.exists(directory):
-            Stark.log(f"No directory named '{directory}' found")
+            Web.log(f"No directory named '{directory}' found")
             return
         if "/." not in directory:
             directory = directory.replace('.', '/')
@@ -228,7 +228,7 @@ class Stark(Client, Mechanism):
         | **total_plugins**  | number of plugins in bot  |
         | **all_plugins**    | dictionary of all plugins and their absolute paths|
         | **total_commands** | number of commands in bot |
-        | **all_commands**   | dictionary of command and their descriptions if passed in ``Stark.cmd`` decorator else None |
+        | **all_commands**   | dictionary of command and their descriptions if passed in ``Web.cmd`` decorator else None |
         | **sudo_commands**  | list of all sudo commands available and includes `owner_only` commands |
 
         Example:
@@ -268,7 +268,7 @@ class Stark(Client, Mechanism):
         {
             "basic":"C:\\Users\\....\\plugins\\basic.py",
             "sample":"D:\\Bots\\...\\sample.py",
-            "must_join":"C:\\Users\\...\\pystark\\addons\\must_join.py"
+            "must_join":"C:\\Users\\...\\pyweb\\addons\\must_join.py"
         },
         ```
         """
