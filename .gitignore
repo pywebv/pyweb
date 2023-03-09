@@ -1,0 +1,39 @@
+# IDEs
+.idea/
+.vscode/
+
+# Git
+.gitattributes
+
+# Python
+__pycache__/
+frozen-requirements.txt
+
+# Virtual Env
+venv/
+
+# PyPI
+dist/
+build/
+MANIFEST
+*.egg-info
+
+# Local
+testing/
+/test.py
+/*.env
+/info.txt
+examples/
+features.txt
+
+# Docs
+#old_docs/_build
+#old_docs/source/_local
+/old_docs/
+site/
+
+# Temp
+pyweb/helpers/requests.py
+pyweb/decorators/admins.py
+requests.md
+admins.md
