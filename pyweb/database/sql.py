@@ -1,27 +1,27 @@
-# PyStark - Python add-on extension to Pyrogram
-# Copyright (C) 2021-2022 Stark Bots <https://github.com/StarkBotsIndustries>
+# PyWeb - Python add-on extension to Pyrogram
+# Copyright (C) 2023-2024 PyWebV <https://github.com/pywebv>
 #
-# This file is part of PyStark.
+# This file is part of PyWeb.
 #
-# PyStark is free software: you can redistribute it and/or modify
+# PyWeb is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
 #
-# PyStark is distributed in the hope that it will be useful,
+# PyWeb is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with PyStark. If not, see <https://www.gnu.org/licenses/>.
+# along with PyWeb. If not, see <https://www.gnu.org/licenses/>.
 
 import sqlalchemy
 from ..config import ENV
 from sqlalchemy import inspect
-from pystark.logger import logger
+from pyweb.logger import logger
 from typing import Optional, Union
-from pystark.config import settings
+from pyweb.config import settings
 from sqlalchemy import create_engine
 from sqlalchemy.exc import ProgrammingError
 from sqlalchemy.ext.declarative import declarative_base
