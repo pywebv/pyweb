@@ -31,7 +31,7 @@ SET_BOT_MENU = True
 # Prefixes for commands. For multiple prefixes, specify multiple together like ["&", "*", "/", "."]
 CMD_PREFIXES = ["/"]
 
-# The addons (default plugins) you want to load from pystark
+# The addons (default plugins) you want to load from pyweb
 ADDONS = [
     "start",  # /start command which replies with text in START variable and START_IN_GROUPS variables for groups.
     "help",  # /help command which replies with text in HELP variable. Only private chats
