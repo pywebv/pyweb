@@ -326,7 +326,7 @@ class Web(Client, Mechanism):
         tables = [Users, Bans]
         for t in tables:
             if t.__tablename__ == name:
-                t.__table__.create(checkfirst=True)
+                # t.__table__.create(checkfirst=True)
                 if name == "users":
                     from pyweb.database.sql import Database
                     db = Database()
