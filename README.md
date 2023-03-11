@@ -18,15 +18,15 @@ There are some things that are common in most of the telegram bots. This library
 
 1. **Addons** - Any project using `pyweb` can enable in-built addons that come with pyweb. For example, default addons automatically add some commands like */start*, */help*, */about* and */id*.
 
-   Of course that can be turned off using [project settings](https://pyweb.github.io)
+   Of course that can be turned off using [project settings](https://pywebv.github.io)
 
 2. **Databases** - There are in-built functions that help in using databases. The databases include `postgres`, `tinydb` and `telegramdb`
  
-    To know more about using databases in pyweb - [Click Here](https://pyweb.github.io)
+    To know more about using databases in pyweb - [Click Here](https://pywebv.github.io)
 
 3. **Boilerplate Code** - You can generate a boilerplate with all the files you will need using our command line utility. Optionally, you can generate it with added Heroku Support (app.json, Procfile, etc.).
 
-   To know more, about generating a boilerplate - [Click Here](https://pyweb.github.io)
+   To know more, about generating a boilerplate - [Click Here](https://pywebv.github.io)
 
 4. **Easy-To-Use** - There are multiple things that make this library easy-to-use.
    
