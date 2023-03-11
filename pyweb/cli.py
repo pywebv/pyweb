@@ -33,7 +33,7 @@ def main():
         add_help=False
     )
     cwd = os.getcwd()
-    parser.add_argument('-v', '--version', help='check the current pystark version installed', action='store_true')
+    parser.add_argument('-v', '--version', help='check the current pyweb version installed', action='store_true')
     parser.add_argument('-bp', '--boilerplate', help='create boilerplate in current folder', action='store_true')
     parser.add_argument('-bph', '--boilerplate-heroku', help='create boilerplate in current folder with added heroku support', action='store_true')
     parser.add_argument('-s', '--special', help=argparse.SUPPRESS, action='store_true')
