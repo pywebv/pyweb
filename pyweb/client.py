@@ -328,7 +328,7 @@ class Web(Client, Mechanism):
             if t.__tablename__ == name:
                 t.__table__.create(checkfirst=True)
                 if name == "users":
-                    from pystark.database.sql import Database
+                    from pyweb.database.sql import Database
                     db = Database()
                     if "lang" not in asyncio.get_event_loop().run_until_complete(db.columns("users")):
                         # Temporary Way
