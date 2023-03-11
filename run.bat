@@ -24,7 +24,7 @@ rmdir dist /q/s && (
   echo Cannot found %folder%
 )
 set folder2='PyWeb.egg-info'
-rmdir PyStark.egg-info /q/s && (
+rmdir PyWeb.egg-info /q/s && (
   echo Deleted %folder2%
 ) || (
   echo Cannot found %folder2%
