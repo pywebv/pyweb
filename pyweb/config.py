@@ -23,7 +23,7 @@ from .logger import logger
 from dotenv import load_dotenv
 from pyweb import settings as s
 from importlib import import_module
-from pyweb.plugins import stark as h
+from pyweb.plugins import web as h
 
 
 load_dotenv('.env')
