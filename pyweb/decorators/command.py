@@ -60,7 +60,7 @@ class Command(OnMessage):
 
             channel_only (bool, optional): Only handle messages for channels. Bot will ignore messages in private chats and groups. Defaults to False.
 
-            extra_filters (pyrogram.filters, optional): Extra filters to apply in your function. Import ``filters`` from pyrogram or pystark to use this. See example below.
+            extra_filters (pyrogram.filters, optional): Extra filters to apply in your function. Import ``filters`` from pyrogram or pyweb to use this. See example below.
 
         Examples:
 
