@@ -48,7 +48,7 @@ class Callback(OnCallbackQuery):
 
             group (int, optional): Define a group for this handler. Defaults to 0. [Read More](https://docs.pyrogram.org/topics/more-on-updates#handler-groups)
 
-            filters (pyrogram.filters, optional): Extra filters to apply in your function. Import ``filters`` from pyrogram or pystark to use this. See example below.
+            filters (pyrogram.filters, optional): Extra filters to apply in your function. Import ``filters`` from pyrogram or pyweb to use this. See example below.
 
         Examples:
 
